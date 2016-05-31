@@ -21,7 +21,7 @@ while true; do
 done
 
 npm run docs
-git clone git@github.com:bucharest-gold/unifiedpush-admin-client.git $PUBLISH_DIR
+git clone git@github.com:bucharest-gold/unifiedpush-registration-client.git $PUBLISH_DIR
 cd $PUBLISH_DIR
 git checkout gh-pages
 mkdir $VERSION
