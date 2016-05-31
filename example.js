@@ -12,18 +12,11 @@ registrationClient(baseUrl).then((client) => {
 
     const deviceOptions ={
         deviceToken: 'c8apwu2iJvc:APA91bGRBqDHCl15jqyjDVyHk8irqz8pyiLR0QHYSqRdNF844SlmlrwRZ2vuek56_lcfBeXCxeExP51reF7ESVnygE6Y6qpxrkBur2d5-aC6QcfaRFuPP6qbQmO93e4YhpmD3HalExL6',
-        alias: 'android node',
-        enabled: false
+        alias: 'android node'
     };
 
-    return client.registry.registerDevice(settings, deviceOptions).then((device) => {
-        console.log(device);
-        return device;
-    }).then((device) => {
-        //settings.deviceToken = device.deviceToken;
-       // return client.registry.unregisterDevice(settings);
-    }).then(() => {
-        //console.log('removed');
+    return client.registry.registerDevice(settings, deviceOptions).then((deviceRegistration) => {
+        console.log(deviceRegistration);
     });
 }).catch((err) => {
     console.log('error', err);
