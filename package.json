@@ -1,7 +1,7 @@
 {
   "name": "unifiedpush-registration-client",
   "version": "0.1.0",
-  "description": "",
+  "description": "Registration REST client for the AeroGear UnifiedPush Server",
   "main": "index.js",
   "scripts": {
     "test": "tape test/**/*-test.js",
@@ -46,6 +46,7 @@
     "nock": "^8.0.0",
     "nsp": "^2.3.3",
     "proxyquire": "^1.7.9",
-    "tape": "^4.5.1"
+    "tape": "^4.5.1",
+    "unifiedpush-admin-client": "^0.4.0"
   }
 }
