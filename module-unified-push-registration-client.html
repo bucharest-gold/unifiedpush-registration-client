@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Index</title>
+	<title>Documentation Module: unified-push-registration-client</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,61 +63,253 @@
 		<div id="main">
 			
 
+	<h1 class="page-title">Module: unified-push-registration-client</h1>
+<section>
+
+<header>
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+<dl class="details">
+    
+
 	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
 	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="unifiedPushRegistrationClient"><span class="type-signature"></span>unifiedPushRegistrationClient(baseUrl)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Creates a new UnifiedPush Registration Client
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>baseUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
 
 
+            
+            </td>
 
+            
 
+            
+
+            <td class="description last">The baseurl for the AeroGear UnifiedPush server - ex: http://localhost:8080/ag-push,</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
 	
+
 	
 
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A promise that will resolve with the client object.
+</div>
 
 
 
-
-    <section class="readme-section">
-        <article><p><a href="https://travis-ci.org/bucharest-gold/unifiedpush-registration-client"><img src="https://travis-ci.org/bucharest-gold/unifiedpush-registration-client.svg?branch=master" alt="Build Status"></a>
-<a href="https://coveralls.io/github/bucharest-gold/unifiedpush-registration-client?branch=master"><img src="https://coveralls.io/repos/github/bucharest-gold/unifiedpush-registration-client/badge.svg?branch=master" alt="Coverage Status"></a></p>
-<h2>Unified Push Registration Client</h2><p>A client for registering Devices to the AeroGear UnifiedPush - https://aerogear.org/docs/specs/aerogear-unifiedpush-rest/#home</p>
-<h2>API Documentation</h2><p>http://bucharest-gold.github.io/unifiedpush-registration-client/</p>
-<h2>Example</h2><pre class="prettyprint source"><code>'use strict';
-
-const registrationClient = require('unifiedpush-registration-client');
-
-const baseUrl = 'http://127.0.0.1:8080/ag-push';
-
-const settings = {
-    variantId: 'SOME_VARIANT_ID',
-    secret: 'VARIANT_SECRET'
-};
-
-const deviceOptions = {
-    deviceToken: 'SOME_VALID_DEVICE_TOKEN',
-    alias: 'thing'
-}
-
-registrationClient(baseUrl)
-  .then((client) => {
-    return client.registry.registerDevice(deviceOptions)
-      .then((deviceRegistration) => {
-        console.log('deviceRegistration', deviceRegistration);
-      });
-  })
-  .catch((err) => {
-    console.log('Error', err);
-  });</code></pre></article>
-    </section>
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
 
 
 
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">const registrationClient = require(&#x27;unifiedpush-registration-client&#x27;);
+  const baseUrl: &#x27;http://127.0.0.1:8080/ag-push&#x27;,
+
+  registrationClient(baseUrl)
+    .then((client) =&gt; {
+      client....
+      ...
+      ...
+    });</pre>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
