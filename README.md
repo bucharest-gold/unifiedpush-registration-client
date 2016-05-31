@@ -39,3 +39,12 @@ http://bucharest-gold.github.io/unifiedpush-registration-client/
       .catch((err) => {
         console.log('Error', err);
       });
+
+
+### Importer
+
+There is also a `importer` function that allows mass device registration.
+
+Along with the settings object, you also need to pass it a list of devices.
+
+This list of devices must be an array and can be passed in as a .json file or a JSON object

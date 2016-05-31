@@ -1,8 +1,11 @@
 'use strict';
 
 const test = require('tape');
+const fs = require('fs');
 const registrationClient = require('../../');
 const adminClient = require('unifiedpush-admin-client');
+
+const importerFileLocation =  __dirname + '/../../build/importer-test.json';
 
 const baseUrl = 'http://localhost:8082/ag-push';
 
@@ -121,6 +124,69 @@ test('unRegister Device - sucess', (t) => {
             }).then((device) => {
                 client.registry.unregisterDevice(device.deviceToken);
             }).then(() => {
+                remove(variant.pushAppId);
+                t.end();
+            });
+        });
+    });
+});
+
+test('test importer - file as a string- success', (t) => {
+    // Once we have all the setup,  Register
+    setup().then((variant) => {
+        return registrationClient(baseUrl).then((client) => {
+            const settings = {
+                variantId: variant.variantID,
+                secret: variant.secret
+            };
+
+            t.equals(typeof client.registry.importer, 'function', 'should have the importer function');
+
+            // Just need to register a device first
+            return client.registry.importer(settings, importerFileLocation).then(() => {
+                remove(variant.pushAppId);
+                t.end();
+            });
+        });
+    });
+});
+
+test('test importer - file as a object- success', (t) => {
+    // Once we have all the setup,  Register
+    setup().then((variant) => {
+        return registrationClient(baseUrl).then((client) => {
+            const settings = {
+                variantId: variant.variantID,
+                secret: variant.secret
+            };
+
+            t.equals(typeof client.registry.importer, 'function', 'should have the importer function');
+
+
+            const devices = require(importerFileLocation);
+            // Just need to register a device first
+            return client.registry.importer(settings, devices).then(() => {
+                remove(variant.pushAppId);
+                t.end();
+            });
+        });
+    });
+});
+
+
+test('test importer - file as a readStream- success', (t) => {
+    // Once we have all the setup,  Register
+    setup().then((variant) => {
+        return registrationClient(baseUrl).then((client) => {
+            const settings = {
+                variantId: variant.variantID,
+                secret: variant.secret
+            };
+
+            t.equals(typeof client.registry.importer, 'function', 'should have the importer function');
+
+            // Just need to register a device first
+            return client.registry.importer(settings, fs.createReadStream(importerFileLocation)).then(() => {
                 remove(variant.pushAppId);
                 t.end();
             });
