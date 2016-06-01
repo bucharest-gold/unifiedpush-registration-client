@@ -122,8 +122,39 @@ test('unRegister Device - sucess', (t) => {
             return client.registry.registerDevice(settings, deviceOptions).then((device) => {
                 return device;
             }).then((device) => {
-                client.registry.unregisterDevice(device.deviceToken);
+                settings.deviceToken = device.deviceToken;
+                return client.registry.unregisterDevice(settings);
             }).then(() => {
+                remove(variant.pushAppId);
+                t.end();
+            });
+        });
+    });
+});
+
+test('unRegister Device - fail', (t) => {
+    const deviceOptions ={
+        deviceToken: 'c8apwu2iJvc:APA91bGRBqDHCl15jqyjDVyHk8irqz8pyiLR0QHYSqRdNF844SlmlrwRZ2vuek56_lcfBeXCxeExP51reF7ESVnygE6Y6qpxrkBur2d5-aC6QcfaRFuPP6qbQmO93e4YhpmD3HalExL6',
+        alias: 'Android Thing'
+    };
+    // Once we have all the setup,  Register
+    setup().then((variant) => {
+        return registrationClient(baseUrl).then((client) => {
+            const settings = {
+                variantId: variant.variantID,
+                secret: variant.secret
+            };
+
+            t.equals(typeof client.registry.unregisterDevice, 'function', 'should have the unregisterDevice function');
+
+            // Just need to register a device first
+            return client.registry.registerDevice(settings, deviceOptions).then((device) => {
+                return device;
+            }).then((device) => {
+                settings.deviceToken = 'WRONG_TOKEN';
+                return client.registry.unregisterDevice(settings);
+            }).catch((err) => {
+                t.pass('should fail');
                 remove(variant.pushAppId);
                 t.end();
             });
@@ -187,6 +218,27 @@ test('test importer - file as a readStream- success', (t) => {
 
             // Just need to register a device first
             return client.registry.importer(settings, fs.createReadStream(importerFileLocation)).then(() => {
+                remove(variant.pushAppId);
+                t.end();
+            });
+        });
+    });
+});
+
+test('test importer - file as a string- failure', (t) => {
+    // Once we have all the setup,  Register
+    setup().then((variant) => {
+        return registrationClient(baseUrl).then((client) => {
+            const settings = {
+                variantId: variant.variantID,
+                secret: variant.secret + '1'
+            };
+
+            t.equals(typeof client.registry.importer, 'function', 'should have the importer function');
+
+            // Just need to register a device first
+            return client.registry.importer(settings, importerFileLocation).catch((err) => {
+                t.pass('should fail');
                 remove(variant.pushAppId);
                 t.end();
             });
