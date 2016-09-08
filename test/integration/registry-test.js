@@ -6,7 +6,7 @@ const fs = require('fs');
 const registrationClient = require('../../');
 const adminClient = require('unifiedpush-admin-client');
 
-const importerFileLocation = path.join(__dirname, '/../../build/importer-test.json');
+const importerFileLocation = path.join(__dirname, '/../../scripts/importer-test.json');
 
 const baseUrl = 'http://localhost:8082/ag-push';
 
