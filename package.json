@@ -17,6 +17,14 @@
     "Node.js",
     "REST"
   ],
+  "files": [
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "lib",
+    "example.js",
+    "index.js"
+  ],
   "author": {
     "name": "Red Hat, Inc."
   },
