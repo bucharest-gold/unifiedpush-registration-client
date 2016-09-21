@@ -8,7 +8,8 @@
     "lint": "eslint lib/*.js test/**/*.js index.js example.js",
     "prepublish": "./node_modules/nsp/bin/nsp check",
     "coverage": "istanbul cover tape test/unit/ups-registration-client-test.js tape test/integration/registry-test.js",
-    "docs": "./node_modules/.bin/jsdoc --verbose -d docs -t ./node_modules/ink-docstrap/template -R README.md index.js ./lib/*.js"
+    "docs": "./node_modules/.bin/jsdoc --verbose -d docs -t ./node_modules/ink-docstrap/template -R README.md index.js ./lib/*.js",
+    "dependencyCheck": "szero . --ci=true"
   },
   "keywords": [
     "AeroGear",
